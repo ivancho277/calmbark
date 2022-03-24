@@ -7,7 +7,7 @@ async function fetchdogpic() {
         console.log('----------------------------------------------------');
         console.log(response.data.message);
         console.log('----------------------------------------------------');
-        console.log(response);
+       // console.log(response);
         return response.data.message;
     })
 }

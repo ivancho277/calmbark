@@ -6,7 +6,14 @@ import dogIcon from './assets/icons8-dog-100.png'
 
 export default function App() {
 
-  [dogPicture, setDogPicture] = useState();
+  [dogPicture, setDogPicture] = useState(dogIcon);
+  [dogPictures, updateDogPictures] = useState([]);
+
+  const onClick = async () => {
+    await fetchdogpic().then(res => {
+      updateDogPictures(dogPictures => [...dogPictures, res]);
+    });
+  }
   //[buttonClick, setButtonClick] = useState(false);
   // const initialState = async () => {fetchdogpic().then((response) => {
   //     response.data.
@@ -18,19 +25,28 @@ export default function App() {
       const dogURL = await fetchdogpic();
       if (!ignore) {
         setDogPicture(dogURL);
+        //dogPictures.push(dogURL);
+        updateDogPictures(dogURL);
       }
+      console.log("-------------------------------")
+      console.log(dogPictures);
     }
-      fetchData();
-      return () => { ignore = true; }
-    }, [dogPicture]);
+    fetchdata();
+    return () => { ignore = true; }
+  }, [dogPicture]);
 
 
 
   return (
     <View style={styles.container}>
       <Text>An App for Babe sauce {`${dogPicture}`}</Text>
-      <Button onPress={() => fetchdogpic()} soruce={dogPicture} title="press for puppers" />
-      <Image style={styles.img} source={dogPicture} />
+      <Button onPress={() => onClick()}  title="press for puppers" />
+      <Image
+        style={styles.img}
+        source={{
+          uri: dogPicture
+        }}
+      />
       <StatusBar style="auto" />
     </View>
   );
