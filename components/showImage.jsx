@@ -11,7 +11,7 @@ const ShowImage = ({dogurl, isloaded}) => {
     useEffect(() => {
         console.log(dogurl);
         console.log(isloaded);
-    },[]);
+    },[dogurl]);
 
     return (
         <View style={styles.container}>
