@@ -3,11 +3,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import fetchdogpic from './apis/dogapi'
 import dogIcon from './assets/icons8-dog-100.png'
+import ShowImage from './components/showImage'
 
 export default function App() {
 
   [dogPicture, setDogPicture] = useState(dogIcon);
-  [dogPictures, updateDogPictures] = useState([]);
+  [dogPictures, updateDogPictures] = useState([dogIcon]);
 
   const onClick = async () => {
     await fetchdogpic().then(res => {
@@ -39,14 +40,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>An App for Babe sauce {`${dogPicture}`}</Text>
+      <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
       <Button onPress={() => onClick()}  title="press for puppers" />
-      <Image
-        style={styles.img}
-        source={{
-          uri: dogPicture
-        }}
-      />
+      <ShowImage dogurl={dogPicture} isloaded={dogPicture? true : false} />
       <StatusBar style="auto" />
     </View>
   );
@@ -64,3 +60,10 @@ const styles = StyleSheet.create({
     height: '60%',
   }
 });
+
+{/* <Image
+style={styles.img}
+source={{
+  uri: dogPicture
+}}
+/> */}
