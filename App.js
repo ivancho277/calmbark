@@ -12,7 +12,7 @@ export default function App() {
 
   const onClick = async () => {
     await fetchdogpic().then(res => {
-      updateDogPictures(dogPictures => [...dogPictures, res]);
+      setDogPicture(() => res);
     });
   }
   //[buttonClick, setButtonClick] = useState(false);
