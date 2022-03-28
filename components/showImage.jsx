@@ -30,14 +30,14 @@ const ShowImage = ({dogurl, isloaded}) => {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        backgroundColor: 'pink',
+        padding: 15,
     }, 
     img: {
-        width: 100,
-        height: 150
+        width: 300,
+        height: 250
     }
 });
 
