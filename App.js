@@ -8,11 +8,13 @@ import ShowImage from './components/showImage'
 export default function App() {
 
   [dogPicture, setDogPicture] = useState(dogIcon);
-  [dogPictures, updateDogPictures] = useState([dogIcon]);
+  [dogPictures, updateDogPictures] = useState([]);
 
   const onClick = async () => {
     await fetchdogpic().then(res => {
       setDogPicture(() => res);
+      updateDogPictures((dogPictures) => [...dogPictures, res]);
+
     });
   }
   //[buttonClick, setButtonClick] = useState(false);
@@ -26,7 +28,7 @@ export default function App() {
       const dogURL = await fetchdogpic();
       if (!ignore) {
         setDogPicture(dogURL);
-        //dogPictures.push(dogURL);
+        //updateDogPictures((dogPictures => [...dogPictures, dogURL]) );
         updateDogPictures(dogURL);
       }
       console.log("-------------------------------")
@@ -41,7 +43,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
-      <Button onPress={() => onClick()}  title="press for puppers" />
+      <Button onPress={() => onClick().then(console.log(dogPictures))}  title="press for puppers" />
       <ShowImage dogurl={dogPicture} isloaded={dogPicture? true : false} />
       <StatusBar style="auto" />
     </View>
