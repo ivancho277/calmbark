@@ -13,7 +13,7 @@ export default function App() {
   const onClick = async () => {
     await fetchdogpic().then(res => {
       setDogPicture(() => res);
-      updateDogPictures((dogPictures) => [...dogPictures, res]);
+      updateDogPictures((dogs) => [...dogs, res]);
 
     });
   }
@@ -28,8 +28,8 @@ export default function App() {
       const dogURL = await fetchdogpic();
       if (!ignore) {
         setDogPicture(dogURL);
-        //updateDogPictures((dogPictures => [...dogPictures, dogURL]) );
-        updateDogPictures(dogURL);
+        updateDogPictures((dogs => [...dogs, dogURL]) );
+        //updateDogPictures(dogURL);
       }
       console.log("-------------------------------")
       console.log(dogPictures);
@@ -43,7 +43,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
-      <Button onPress={() => onClick().then(console.log(dogPictures))}  title="press for puppers" />
+      <Button onPress={() => onClick().then(console.log(...dogPictures))}  title="press for puppers" />
       <ShowImage dogurl={dogPicture} isloaded={dogPicture? true : false} />
       <StatusBar style="auto" />
     </View>
