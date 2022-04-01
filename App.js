@@ -13,7 +13,7 @@ export default function App() {
   const onClick = async () => {
     await fetchdogpic().then(res => {
       setDogPicture(() => res);
-      updateDogPictures((dogs) => [...dogs, res]);
+      updateDogPictures(dogs => [...dogs, res]);
 
     });
   }
@@ -28,15 +28,17 @@ export default function App() {
       const dogURL = await fetchdogpic();
       if (!ignore) {
         setDogPicture(dogURL);
-        updateDogPictures((dogs => [...dogs, dogURL]) );
+        //updateDogPictures((dogs => [...dogs, dogURL]) );
         //updateDogPictures(dogURL);
+        console.log('not IGNORE')
       }
+
       console.log("-------------------------------")
       console.log(dogPictures);
     }
     fetchdata();
     return () => { ignore = true; }
-  }, [dogPicture]);
+  }, [dogPicture, dogPictures]);
 
 
 
