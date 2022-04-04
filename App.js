@@ -48,6 +48,7 @@ export default function App() {
       <Button onPress={() => onClick().then(console.log(...dogPictures))}  title="press for puppers" />
       <ShowImage dogurl={dogPicture} isloaded={dogPicture? true : false} />
       <StatusBar style="auto" />
+      <Text>hi Lucas</Text>
     </View>
   );
 }
