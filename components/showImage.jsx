@@ -28,6 +28,7 @@ const ShowImage = ({dogurl, isloaded}) => {
 };
 
 // define your styles
+//adding a test comment
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',

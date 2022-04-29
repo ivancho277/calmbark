@@ -9,11 +9,14 @@ export default function App() {
 
   [dogPicture, setDogPicture] = useState(dogIcon);
   [dogPictures, updateDogPictures] = useState([]);
+  [photoIndex, setPhotoIndex] = useState(0);
+
 
   const onClick = async () => {
     await fetchdogpic().then(res => {
       setDogPicture(() => res);
       updateDogPictures(dogs => [...dogs, res]);
+      
 
     });
   }
@@ -45,8 +48,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
+
       <Button onPress={() => onClick().then(console.log(...dogPictures))}  title="press for puppers" />
-      <ShowImage dogurl={dogPicture} isloaded={dogPicture? true : false} />
+      <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length-1]} isloaded={dogPicture? true : false} />
       <StatusBar style="auto" />
       <Text>hi Lucas</Text>
     </View>
