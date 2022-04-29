@@ -11,6 +11,9 @@ export default function App() {
   [dogPictures, updateDogPictures] = useState([]);
   [photoIndex, setPhotoIndex] = useState(0);
 
+  const onPreviousPress = () => {
+    
+  }
 
   const onClick = async () => {
     await fetchdogpic().then(res => {
