@@ -19,7 +19,7 @@ export default function App() {
     await fetchdogpic().then(res => {
       setDogPicture(() => res);
       updateDogPictures(dogs => [...dogs, res]);
-      
+
 
     });
   }
@@ -52,10 +52,9 @@ export default function App() {
     <View style={styles.container}>
       <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
 
-      <Button onPress={() => onClick().then(console.log(...dogPictures))}  title="press for puppers" />
-      <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length-1]} isloaded={dogPicture? true : false} />
+      <Button onPress={() => onClick().then(console.log(...dogPictures))} title="press for puppers" />
+      <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length - 1]} isloaded={dogPicture ? true : false} />
       <StatusBar style="auto" />
-      <Text>hi Lucas</Text>
     </View>
   );
 }
