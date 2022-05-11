@@ -12,7 +12,8 @@ export default function App() {
   [photoIndex, setPhotoIndex] = useState(0);
 
   const onPreviousPress = () => {
-    
+    console.log('position:', photoIndex);
+    setPhotoIndex(photoIndex++);
   }
 
   const onClick = async () => {
@@ -51,10 +52,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
-
+    <Button  onPress={() => onPreviousPress()} title="Previous Image"/>
       <Button onPress={() => onClick().then(console.log(...dogPictures))} title="press for puppers" />
       <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length - 1]} isloaded={dogPicture ? true : false} />
-      <StatusBar style="auto" />
+      <StatusBar style="auto" /> 
     </View>
   );
 }
