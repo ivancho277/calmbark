@@ -52,7 +52,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
-    <Button  onPress={() => onPreviousPress()} title="Previous Image"/>
+    <Button  onPress={() => onPreviousPress()} style={styles.backbtn} title="Previous Image"/>
       <Button onPress={() => onClick().then(console.log(...dogPictures))} title="press for puppers" />
       <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length - 1]} isloaded={dogPicture ? true : false} />
       <StatusBar style="auto" /> 
@@ -71,6 +71,10 @@ const styles = StyleSheet.create({
   img: {
     width: '70%',
     height: '60%',
+  },
+  backbtn: {
+    backgroundColor: "red",
+    padding: '10px',
   }
 });
 
