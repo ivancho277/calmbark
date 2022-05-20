@@ -13,13 +13,13 @@ export default function App() {
 
   const onPreviousPress = () => {
     console.log('position:', photoIndex);
-    setPhotoIndex(photoIndex++);
   }
 
   const onClick = async () => {
     await fetchdogpic().then(res => {
       setDogPicture(() => res);
       updateDogPictures(dogs => [...dogs, res]);
+      setPhotoIndex(++photoIndex);
 
 
     });
