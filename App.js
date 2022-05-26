@@ -39,11 +39,16 @@ export default function App() {
   // })
   useEffect(() => {
     let ignore = false;
+    let start = true;
 
     async function fetchdata() {
       const dogURL = await fetchdogpic();
       if (!ignore) {
         setDogPicture(dogURL);
+        if(start){
+          setPhotoIndex(0);
+          console.log('Start');
+        }
         //updateDogPictures((dogs => [...dogs, dogURL]) );
         console.log('not IGNORE')
       }
@@ -52,7 +57,7 @@ export default function App() {
       console.log(dogPictures);
     }
     fetchdata();
-    return () => { ignore = true; }
+    return () => { ignore = true; start = false; }
   }, [dogPicture, dogPictures]);
 
 
