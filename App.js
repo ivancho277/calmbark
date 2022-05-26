@@ -27,9 +27,9 @@ export default function App() {
   const onClick = async () => {
     await fetchdogpic().then(res => {
       setDogPicture(() => res);
-      updateDogPictures(dogs => [...dogs, res]);
       setPhotoIndex(++photoIndex);
-
+      updateDogPictures(dogs => [...dogs, res]);
+      console.log("INDEX", photoIndex);
 
     });
   }
@@ -62,7 +62,8 @@ export default function App() {
       <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
     <Button  onPress={() => onPreviousPress()} style={styles.backbtn} title="Previous Image"/>
       <Button onPress={() => onClick().then(console.log(...dogPictures))} title="press for puppers" />
-      <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length - 1]} isloaded={dogPicture ? true : false} />
+      { /* <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length - 1]} isloaded={dogPicture ? true : false} /> */ } 
+      <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[photoIndex]} isloaded={dogPicture ? true : false} />
       <StatusBar style="auto" /> 
     </View>
   );
