@@ -7,7 +7,7 @@ import dogIcon from '../assets/icons8-dog-100.png'
 
 
 // create a component
-const ShowImage = ({dogurl, isloaded}) => {
+const ShowImage = ({dogurl, isloaded, photosArray ,photoIndex }) => {
     useEffect(() => {
         console.log(dogurl);
         console.log(isloaded);

@@ -12,17 +12,18 @@ export default function App() {
   [photoIndex, setPhotoIndex] = useState(0);
 
   const onPreviousPress = () => {
-    setPhotoIndex(--photoIndex);
+    setPhotoIndex
+    setDogPicture(--photoIndex);
     console.log('position:', photoIndex);
   }
 
   const changePhotoIndex = (index) => setPhotoIndex(index => {
     if(index === dogPictures.length){
-      console.log('Index is ', index)
+      console.log('Index is ', index);
     }
   }) 
 
-
+ 
 
   const onClick = async () => {
     await fetchdogpic().then(res => {
@@ -46,7 +47,7 @@ export default function App() {
       if (!ignore) {
         setDogPicture(dogURL);
         if(start){
-          setPhotoIndex(0);
+          setPhotoIndex(photoIndex);
           console.log('Start');
         }
         //updateDogPictures((dogs => [...dogs, dogURL]) );
