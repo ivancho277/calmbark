@@ -47,7 +47,7 @@ export default function App() {
       if (!ignore) {
         setDogPicture(dogURL);
         if(start){
-          setPhotoIndex(photoIndex);
+          setPhotoIndex(photoIndex++);
           console.log('Start');
         }
         //updateDogPictures((dogs => [...dogs, dogURL]) );
@@ -69,7 +69,7 @@ export default function App() {
     <Button  onPress={() => onPreviousPress()} style={styles.backbtn} title="Previous Image"/>
       <Button onPress={() => onClick().then(console.log(...dogPictures))} title="press for puppers" />
       { /* <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length - 1]} isloaded={dogPicture ? true : false} /> */ } 
-      <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[photoIndex]} isloaded={dogPicture ? true : false} />
+      <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[photoIndex]} isloaded={dogPicture ? true : false} photosArray={dogPictures} index={photoIndex} />
       <StatusBar style="auto" /> 
     </View>
   );
