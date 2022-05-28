@@ -47,6 +47,7 @@ export default function App() {
       if (!ignore) {
         setDogPicture(dogURL);
         if(start){
+          updateDogPictures([dogURL]);
           setPhotoIndex(photoIndex++);
           console.log('Start');
         }
