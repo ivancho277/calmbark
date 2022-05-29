@@ -40,16 +40,18 @@ export default function App() {
   // })
   useEffect(() => {
     let ignore = false;
-    let start = true;
+    let start = true; //!This is why were are looping infitiely (Same here)
 
     async function fetchdata() {
       const dogURL = await fetchdogpic();
       if (!ignore) {
         setDogPicture(dogURL);
-        if(start){
+        if(!start){
           updateDogPictures([dogURL]);
           setPhotoIndex(photoIndex++);
           console.log('Start');
+        } else {
+          updateDogPictures( dogs => [...dogs, res]);
         }
         //updateDogPictures((dogs => [...dogs, dogURL]) );
         console.log('not IGNORE')
@@ -59,7 +61,7 @@ export default function App() {
       console.log(dogPictures);
     }
     fetchdata();
-    return () => { ignore = true; start = false; }
+    return () => { ignore = true; start = false; }   //!This is why were are looping infitiely 
   }, [dogPicture, dogPictures]);
 
 
