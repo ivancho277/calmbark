@@ -18,12 +18,12 @@ export default function App() {
   }
 
   const changePhotoIndex = (index) => setPhotoIndex(index => {
-    if(index === dogPictures.length){
+    if (index === dogPictures.length) {
       console.log('Index is ', index);
     }
-  }) 
+  })
 
- 
+
 
   const onClick = async () => {
     await fetchdogpic().then(res => {
@@ -40,18 +40,21 @@ export default function App() {
   // })
   useEffect(() => {
     let ignore = false;
-    let start = true; //!This is why were are looping infitiely (Same here)
-
+    let start;
+    if (dogPictures.length > 0) {
+      start = true; //!This is why were are looping infitiely (Same here)
+    }
     async function fetchdata() {
       const dogURL = await fetchdogpic();
       if (!ignore) {
         setDogPicture(dogURL);
-        if(!start){
+        if (start) {
           updateDogPictures([dogURL]);
           setPhotoIndex(photoIndex++);
           console.log('Start');
         } else {
-          updateDogPictures( dogs => [...dogs, res]);
+          updateDogPictures([dogURL]);
+          setPhotoIndex(photoIndex++);
         }
         //updateDogPictures((dogs => [...dogs, dogURL]) );
         console.log('not IGNORE')
@@ -69,11 +72,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>An App for Babe sauce {`${dogPictures[dogPictures.length - 1]}`}</Text>
-    <Button  onPress={() => onPreviousPress()} style={styles.backbtn} title="Previous Image"/>
+      <Button onPress={() => onPreviousPress()} style={styles.backbtn} title="Previous Image" />
       <Button onPress={() => onClick().then(console.log(...dogPictures))} title="press for puppers" />
-      { /* <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length - 1]} isloaded={dogPicture ? true : false} /> */ } 
+      { /* <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[dogPictures.length - 1]} isloaded={dogPicture ? true : false} /> */}
       <ShowImage dogurl={dogPictures.length === 0 ? dogPicture : dogPictures[photoIndex]} isloaded={dogPicture ? true : false} photosArray={dogPictures} index={photoIndex} />
-      <StatusBar style="auto" /> 
+      <StatusBar style="auto" />
     </View>
   );
 }
