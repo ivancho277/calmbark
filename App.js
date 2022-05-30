@@ -41,7 +41,7 @@ export default function App() {
   useEffect(() => {
     let ignore = false;
     let start;
-    if (dogPictures.length > 0) {
+    if (dogPictures.length === 0) {
       start = true; //!This is why were are looping infitiely (Same here)
     }
     async function fetchdata() {
@@ -53,7 +53,7 @@ export default function App() {
           setPhotoIndex(photoIndex++);
           console.log('Start');
         } else {
-          updateDogPictures([dogURL]);
+
           setPhotoIndex(photoIndex++);
         }
         //updateDogPictures((dogs => [...dogs, dogURL]) );
