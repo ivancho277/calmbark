@@ -11,7 +11,7 @@ const ShowImage = ({dogurl, isloaded, photosArray, index }) => {
     useEffect(() => {
         console.log(dogurl);
         console.log(isloaded);
-    },[dogurl]);
+    },[dogurl, index]);
 
     return (
         <View style={styles.container}>
@@ -27,7 +27,7 @@ const ShowImage = ({dogurl, isloaded, photosArray, index }) => {
     );
 };
 
-// define your styles
+// define your styles      
 //adding a test comment
 const styles = StyleSheet.create({
     container: {

@@ -1,4 +1,16 @@
-CUrrent projects:  [ ]  
-## Calm Dogs app
+Current projects:   
+    Calm Barks app:
+        ☐ 
+        ✔ need to add a previous photo button @done (5/17/2022, 1:49:36 PM)
+        ✔ Also first Image does not get added to the array in state. --fix this @done (5/26/2022, 6:54:41 PM)
+        ☐ Now need to make that button work
+        ☐ Figure out how to control index state
+        ✔ need to fix initial load photo, as it renders before it's been returned from the dogAPI @done (5/26/2022, 6:54:52 PM) 
+        ✔ Fix the infite looping render issue, Which I think is due to how my start variable is set in UseEffect, then how it's return / reassigned. @done (5/29/2022, 8:55:58 PM)
+        ☐ Now the previous button is causing an infite rerender 
+
+         
 
 
+
+ 

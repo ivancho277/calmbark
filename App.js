@@ -12,7 +12,7 @@ export default function App() {
   [photoIndex, setPhotoIndex] = useState(0);
 
   const onPreviousPress = () => {
-    setPhotoIndex
+    setPhotoIndex(--photoIndex);
     setDogPicture(--photoIndex);
     console.log('position:', photoIndex);
   }
@@ -40,32 +40,30 @@ export default function App() {
   // })
   useEffect(() => {
     let ignore = false;
-    let start;
-    if (dogPictures.length === 0) {
-      start = true; //!This is why were are looping infitiely (Same here)
-    }
+    let start = false;
+    // if (dogPictures.length === 0) {
+    //   start = false; //!This is why were are looping infitiely (Same here)
+    // }
     async function fetchdata() {
       const dogURL = await fetchdogpic();
       if (!ignore) {
         setDogPicture(dogURL);
         if (start) {
-          updateDogPictures([dogURL]);
-          setPhotoIndex(photoIndex++);
+          updateDogPictures((dogs => [...dogs, dogURL]) );
+          setPhotoIndex(photoIndex);
           console.log('Start');
         } else {
-
           setPhotoIndex(photoIndex++);
+          updateDogPictures((dogs => [ dogURL]) );
         }
-        //updateDogPictures((dogs => [...dogs, dogURL]) );
         console.log('not IGNORE')
       }
-
       console.log("-------------------------------")
       console.log(dogPictures);
     }
     fetchdata();
-    return () => { ignore = true; start = false; }   //!This is why were are looping infitiely 
-  }, [dogPicture, dogPictures]);
+    return () => { ignore = true; start = true; }   //!This is why were are looping infitiely 
+  }, [dogPictures]);
 
 
 
